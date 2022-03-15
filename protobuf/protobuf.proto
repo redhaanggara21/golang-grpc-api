@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option go_package = "grpc-api/protobuf";
+
+package protobuf;
+
+message User {
+  int32 uid = 1;
+  string name = 2;
+  string nationality = 3;
+  int32 zip = 4;
+}
+
+message FetchUserRequest {
+  int32 uid = 1;
+}
+
+message FetchUserResponse {
+  User user = 1;
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+message UpdateUserRequest {
+  User user = 1;
+}
+
+message UpdateUserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  int32 uid = 1;
+}
+
+message DeleteUserResponse {
+  int32 uid = 1;
+}
+
+
+service UserService {
+  rpc FetchUser(FetchUserRequest) returns (FetchUserResponse);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+}
